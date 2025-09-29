@@ -228,23 +228,46 @@ const SignalGenerator = () => {
                     key={index}
                     className="flex items-center justify-between p-4 rounded-lg bg-card/50 border border-primary/10 hover:border-primary/30 transition-smooth"
                   >
-                    <div className="flex items-center gap-4">
-                      <div className={`w-2 h-2 rounded-full ${
-                        signal.direction === "CALL" ? "bg-success" : "bg-warning"
-                      }`} />
-                      <span className="font-medium text-card-foreground">{signal.time}</span>
-                      <span className="text-muted-foreground">{signal.asset}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      {signal.direction === "CALL" ? (
-                        <TrendingUp className="w-4 h-4 text-success" />
-                      ) : (
-                        <TrendingDown className="w-4 h-4 text-warning" />
-                      )}
-                      <Badge variant={signal.direction === "CALL" ? "default" : "secondary"}>
-                        {signal.direction}
-                      </Badge>
-                    </div>
+                     <div className="flex items-center gap-4">
+                       <div className={`w-2 h-2 rounded-full ${
+                         signal.direction === "CALL" ? "bg-success" : "bg-destructive"
+                       }`} />
+                       <span className="font-medium text-card-foreground">{signal.time}</span>
+                       <span className="text-muted-foreground">{signal.asset}</span>
+                     </div>
+                     <div className="flex items-center gap-3">
+                       {signal.direction === "CALL" ? (
+                         <TrendingUp className="w-4 h-4 text-success" />
+                       ) : (
+                         <TrendingDown className="w-4 h-4 text-destructive" />
+                       )}
+                       <Badge variant={signal.direction === "CALL" ? "default" : "destructive"}>
+                         {signal.direction}
+                       </Badge>
+                       <Button
+                         size="sm"
+                         variant="ghost"
+                         onClick={async () => {
+                           const signalText = `${signal.time} - ${signal.asset} - ${signal.direction}`;
+                           try {
+                             await navigator.clipboard.writeText(signalText);
+                             toast({
+                               title: "Signal Copied!",
+                               description: "Signal copied to clipboard",
+                             });
+                           } catch (err) {
+                             toast({
+                               title: "Copy Failed",
+                               description: "Unable to copy signal to clipboard",
+                               variant: "destructive",
+                             });
+                           }
+                         }}
+                         className="h-8 px-2"
+                       >
+                         <Copy className="w-3 h-3" />
+                       </Button>
+                     </div>
                   </div>
                 ))}
               </div>

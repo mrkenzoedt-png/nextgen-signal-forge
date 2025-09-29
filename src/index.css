@@ -17,10 +17,10 @@
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
 
-    /* Primary - NEXTGEN Blue */
-    --primary: 217 91% 60%;
+    /* Primary - NEXTGEN Purple/Pink */
+    --primary: 280 100% 70%;
     --primary-foreground: 0 0% 98%;
-    --primary-glow: 217 91% 75%;
+    --primary-glow: 320 100% 75%;
 
     /* Secondary - Professional Gray */
     --secondary: 240 4.8% 95.9%;
@@ -30,33 +30,33 @@
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
 
-    /* Accent - Success Green */
-    --accent: 142 76% 36%;
+    /* Accent - Teal/Cyan */
+    --accent: 180 100% 50%;
     --accent-foreground: 0 0% 98%;
 
     /* Status Colors */
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
     
-    --success: 142 76% 36%;
+    --success: 120 100% 40%;
     --success-foreground: 0 0% 98%;
     
-    --warning: 38 92% 50%;
+    --warning: 0 84% 60%;
     --warning-foreground: 0 0% 98%;
 
     /* Interface Elements */
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 217 91% 60%;
+    --ring: 280 100% 70%;
 
     /* NEXTGEN Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 75%));
-    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60%), hsl(240 10% 3.9%));
+    --gradient-primary: linear-gradient(135deg, hsl(280 100% 70%), hsl(320 100% 75%));
+    --gradient-hero: linear-gradient(135deg, hsl(280 100% 70%), hsl(240 10% 3.9%));
     --gradient-card: linear-gradient(145deg, hsl(240 10% 3.9%), hsl(240 15% 8%));
 
     /* Shadows */
-    --shadow-elegant: 0 10px 30px -10px hsl(217 91% 60% / 0.3);
-    --shadow-glow: 0 0 40px hsl(217 91% 75% / 0.4);
+    --shadow-elegant: 0 10px 30px -10px hsl(280 100% 70% / 0.3);
+    --shadow-glow: 0 0 40px hsl(320 100% 75% / 0.4);
     --shadow-card: 0 8px 32px -8px hsl(240 10% 3.9% / 0.4);
 
     /* Animations */
