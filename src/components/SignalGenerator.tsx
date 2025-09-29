@@ -6,8 +6,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
-import { TrendingUp, TrendingDown, Activity, Zap } from "lucide-react";
+import { TrendingUp, TrendingDown, Activity, Zap, Copy, Check } from "lucide-react";
 import LoadingSpinner from "./LoadingSpinner";
+import { useToast } from "@/hooks/use-toast";
+import nextgenLogo from "@/assets/nextgen-logo.jpg";
 
 interface Signal {
   time: string;
@@ -22,6 +24,8 @@ const SignalGenerator = () => {
   const [signalCount, setSignalCount] = useState(10);
   const [filterType, setFilterType] = useState("ALL");
   const [backtestFilter, setBacktestFilter] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const { toast } = useToast();
 
   const assets = [
     "EUR/USD", "EUR/JPY", "USD/JPY", "EUR/GBP", "USD/EGP-OTC",
@@ -63,15 +67,41 @@ const SignalGenerator = () => {
     setIsGenerating(false);
   };
 
+  const copyAllSignals = async () => {
+    if (signals.length === 0) return;
+    
+    const signalText = signals.map(signal => 
+      `${signal.time} - ${signal.asset} - ${signal.direction}`
+    ).join('\n');
+    
+    try {
+      await navigator.clipboard.writeText(signalText);
+      setCopied(true);
+      toast({
+        title: "Signals Copied!",
+        description: "All signals have been copied to clipboard",
+      });
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      toast({
+        title: "Copy Failed",
+        description: "Unable to copy signals to clipboard",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
           <div className="flex items-center justify-center gap-3">
-            <div className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center shadow-glow">
-              <Zap className="w-6 h-6 text-primary-foreground" />
-            </div>
+            <img 
+              src={nextgenLogo} 
+              alt="NextGen Logo" 
+              className="w-16 h-16 rounded-full shadow-glow object-cover"
+            />
             <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
               NEXTGEN
             </h1>
@@ -166,13 +196,30 @@ const SignalGenerator = () => {
         {signals.length > 0 && (
           <Card className="nextgen-glass shadow-card">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-success" />
-                Generated Signals ({signals.length})
-              </CardTitle>
-              <CardDescription>
-                Latest trading signals based on your configuration
-              </CardDescription>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="flex items-center gap-2">
+                    <TrendingUp className="w-5 h-5 text-success" />
+                    Generated Signals ({signals.length})
+                  </CardTitle>
+                  <CardDescription>
+                    Latest trading signals based on your configuration
+                  </CardDescription>
+                </div>
+                <Button
+                  onClick={copyAllSignals}
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2"
+                >
+                  {copied ? (
+                    <Check className="w-4 h-4 text-success" />
+                  ) : (
+                    <Copy className="w-4 h-4" />
+                  )}
+                  {copied ? "Copied!" : "Copy All"}
+                </Button>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="grid gap-3">
@@ -210,7 +257,7 @@ const SignalGenerator = () => {
           <p className="text-muted-foreground">
             &copy; 2024 NEXTGEN Trading Platform | 
             <a 
-              href="https://t.me/qbttrader" 
+              href="https://t.me/nextgenvipsignals" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-primary hover:text-primary-glow transition-smooth ml-2"
