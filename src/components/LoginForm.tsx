@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import pqtLogo from "@/assets/pqt-logo.jpg";
 
 interface LoginFormProps {
   onLogin: () => void;
@@ -29,12 +30,14 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
       <Card className="w-full max-w-md nextgen-glass shadow-elegant">
         <CardHeader className="text-center space-y-4">
           <div className="flex items-center justify-center mb-4">
-            <div className="w-16 h-16 rounded-full gradient-primary flex items-center justify-center shadow-glow">
-              <span className="text-2xl font-bold text-primary-foreground">NG</span>
-            </div>
+            <img 
+              src={pqtLogo} 
+              alt="Prime Quotex Trader Logo" 
+              className="w-24 h-24 rounded-full shadow-glow object-cover"
+            />
           </div>
           <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-            NEXTGEN
+            Prime Quotex Trader Bot
           </CardTitle>
           <CardDescription className="text-muted-foreground">
             Advanced Trading Platform
