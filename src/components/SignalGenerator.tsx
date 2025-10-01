@@ -280,7 +280,7 @@ const SignalGenerator = () => {
           <p className="text-muted-foreground">
             &copy; 2024 Prime Quotex Trader Bot | 
             <a 
-              href="https://t.me/nextgenvipsignals" 
+              href="https://t.me/+8ohCpSuCPG9kZDVk" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-primary hover:text-primary-glow transition-smooth ml-2"
