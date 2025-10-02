@@ -280,7 +280,7 @@ const SignalGenerator = () => {
           <p className="text-muted-foreground">
             &copy; 2024 NEXTGEN Trading Platform | 
             <a 
-              href="https://t.me/+8ohCpSuCPG9kZDVk" 
+              href="https://t.me/nextgenpo_bot" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-primary hover:text-primary-glow transition-smooth ml-2"

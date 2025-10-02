@@ -29,7 +29,7 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
   };
 
   const handleJoinTelegram = () => {
-    window.open("https://t.me/+8ohCpSuCPG9kZDVk", "_blank");
+    window.open("https://t.me/nextgenpo_bot", "_blank");
     setShowTelegramDialog(false);
     onLogin();
   };
