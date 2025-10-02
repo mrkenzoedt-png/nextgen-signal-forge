@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { TrendingUp, TrendingDown, Activity, Zap, Copy, Check } from "lucide-react";
 import LoadingSpinner from "./LoadingSpinner";
 import { useToast } from "@/hooks/use-toast";
-import pqtLogo from "@/assets/pqt-logo.jpg";
+import nextgenLogo from "@/assets/nextgen-logo.jpg";
 
 interface Signal {
   time: string;
@@ -58,7 +58,7 @@ const SignalGenerator = () => {
 
       newSignals.push({
         time: time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),
-        asset: `${asset} P.Q.T`,
+        asset: `${asset} NEXTGEN`,
         direction
       });
     }
@@ -98,12 +98,12 @@ const SignalGenerator = () => {
         <div className="text-center space-y-4">
           <div className="flex items-center justify-center gap-3">
             <img 
-              src={pqtLogo} 
-              alt="Prime Quotex Trader Logo" 
+              src={nextgenLogo} 
+              alt="NEXTGEN Logo" 
               className="w-20 h-20 rounded-full shadow-glow object-cover"
             />
             <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-              Prime Quotex Trader Bot
+              NEXTGEN
             </h1>
           </div>
           <p className="text-muted-foreground text-lg">Advanced Trading Signal Generator</p>
@@ -278,7 +278,7 @@ const SignalGenerator = () => {
         {/* Footer */}
         <footer className="text-center py-8 border-t border-primary/20">
           <p className="text-muted-foreground">
-            &copy; 2024 Prime Quotex Trader Bot | 
+            &copy; 2024 NEXTGEN Trading Platform | 
             <a 
               href="https://t.me/+8ohCpSuCPG9kZDVk" 
               target="_blank" 

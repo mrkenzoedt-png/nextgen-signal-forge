@@ -3,7 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import pqtLogo from "@/assets/pqt-logo.jpg";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Send } from "lucide-react";
+import nextgenLogo from "@/assets/nextgen-logo.jpg";
 
 interface LoginFormProps {
   onLogin: () => void;
@@ -13,36 +15,49 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showTelegramDialog, setShowTelegramDialog] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     if (username === "NEXTGEN" && password === "NEXTGEN20") {
       setError("");
-      onLogin();
+      setShowTelegramDialog(true);
     } else {
       setError("Invalid credentials. Please try again.");
     }
   };
 
+  const handleJoinTelegram = () => {
+    window.open("https://t.me/+8ohCpSuCPG9kZDVk", "_blank");
+    setShowTelegramDialog(false);
+    onLogin();
+  };
+
+  const handleMaybeLater = () => {
+    setShowTelegramDialog(false);
+    onLogin();
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
-      <Card className="w-full max-w-md nextgen-glass shadow-elegant">
-        <CardHeader className="text-center space-y-4">
-          <div className="flex items-center justify-center mb-4">
-            <img 
-              src={pqtLogo} 
-              alt="Prime Quotex Trader Logo" 
-              className="w-24 h-24 rounded-full shadow-glow object-cover"
-            />
-          </div>
-          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-            Prime Quotex Trader Bot
-          </CardTitle>
-          <CardDescription className="text-muted-foreground">
-            Advanced Trading Platform
-          </CardDescription>
-        </CardHeader>
+    <>
+      <div className="min-h-screen flex items-center justify-center bg-background p-4">
+        <Card className="w-full max-w-md nextgen-glass shadow-elegant">
+          <CardHeader className="text-center space-y-4">
+            <div className="flex items-center justify-center mb-4">
+              <img 
+                src={nextgenLogo} 
+                alt="NEXTGEN Logo" 
+                className="w-24 h-24 rounded-full shadow-glow object-cover"
+              />
+            </div>
+            <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+              NEXTGEN
+            </CardTitle>
+            <CardDescription className="text-muted-foreground">
+              Advanced Trading Platform
+            </CardDescription>
+          </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
@@ -81,6 +96,36 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
         </CardContent>
       </Card>
     </div>
+
+    <Dialog open={showTelegramDialog} onOpenChange={setShowTelegramDialog}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle className="text-2xl text-center bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+            Join Our Telegram
+          </DialogTitle>
+          <DialogDescription className="text-center text-muted-foreground pt-2">
+            Join Our Telegram To Get Free Bots
+          </DialogDescription>
+        </DialogHeader>
+        <div className="flex flex-col gap-3 py-4">
+          <Button
+            onClick={handleJoinTelegram}
+            className="w-full gradient-primary shadow-elegant hover:shadow-glow transition-smooth flex items-center gap-2"
+          >
+            <Send className="w-4 h-4" />
+            Join Telegram Channel
+          </Button>
+          <Button
+            onClick={handleMaybeLater}
+            variant="outline"
+            className="w-full"
+          >
+            Maybe Later
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
+    </>
   );
 };
 
