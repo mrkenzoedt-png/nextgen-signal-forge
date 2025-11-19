@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Send } from "lucide-react";
-import nextgenLogo from "@/assets/nextgen-logo.jpg";
+import forenixLogo from "@/assets/forenix-logo.png";
 
 interface LoginFormProps {
   onLogin: () => void;
@@ -20,7 +20,7 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (username === "NEXTGEN" && password === "NEXTGEN20") {
+    if (username === "FORENIX" && password === "FORENIX20") {
       setError("");
       setShowTelegramDialog(true);
     } else {
@@ -46,13 +46,13 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
           <CardHeader className="text-center space-y-4">
             <div className="flex items-center justify-center mb-4">
               <img 
-                src={nextgenLogo} 
-                alt="NEXTGEN Logo" 
+                src={forenixLogo} 
+                alt="FORENIX Logo" 
                 className="w-24 h-24 rounded-full shadow-glow object-cover"
               />
             </div>
             <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-              NEXTGEN
+              FORENIX
             </CardTitle>
             <CardDescription className="text-muted-foreground">
               Advanced Trading Platform
