@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { TrendingUp, TrendingDown, Activity, Zap, Copy, Check } from "lucide-react";
 import LoadingSpinner from "./LoadingSpinner";
 import { useToast } from "@/hooks/use-toast";
-import nextgenLogo from "@/assets/nextgen-logo.jpg";
+import forenixLogo from "@/assets/forenix-logo.png";
 
 interface Signal {
   time: string;
@@ -58,7 +58,7 @@ const SignalGenerator = () => {
 
       newSignals.push({
         time: time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),
-        asset: `${asset} NEXTGEN`,
+        asset: `${asset} FORENIX`,
         direction
       });
     }
@@ -98,12 +98,12 @@ const SignalGenerator = () => {
         <div className="text-center space-y-4">
           <div className="flex items-center justify-center gap-3">
             <img 
-              src={nextgenLogo} 
-              alt="NEXTGEN Logo" 
+              src={forenixLogo} 
+              alt="FORENIX Logo" 
               className="w-20 h-20 rounded-full shadow-glow object-cover"
             />
             <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-              NEXTGEN
+              FORENIX
             </h1>
           </div>
           <p className="text-muted-foreground text-lg">Advanced Trading Signal Generator</p>
@@ -278,7 +278,7 @@ const SignalGenerator = () => {
         {/* Footer */}
         <footer className="text-center py-8 border-t border-primary/20">
           <p className="text-muted-foreground">
-            &copy; 2024 NEXTGEN Trading Platform | 
+            &copy; 2024 FORENIX Trading Platform |
             <a 
               href="https://t.me/nextgenpo_bot" 
               target="_blank" 
